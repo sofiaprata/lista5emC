@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+//Escreva um programa que adicione dois numeros usando ponteiros. Alem do valor da soma, imprima tambem o endereco de memoria onde o valor resultante dessa soma esta armazenado.
+
+int main(){
+int num1, num2, soma;
+int *p1, *p2;
+
+printf("Digite o primeiro valor: \n");
+scanf("%d", &num1);
+printf("Digite o segundo valor: \n");
+scanf("%d", &num2);
+
+p1 = &num1;
+p2 = &num2;
+
+soma = *p1 + *p2;
+
+printf("A soma dos ponteiros é %d", soma);
+}
