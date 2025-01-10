@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
+#define MX 100
+//Escreva um programa que leia um vetor do usu ́ario e imprima seus valores e seus endere ̧cos. Teste o vetor com tipos de dados diferentes, analise os endere ̧cos. O que vocˆe observou?
+
+int main(){
+    unsigned char *pvetor = NULL; //Null para evitar que o ponteiro vá a um local desconhecido
+    unsigned int tamanho;
+
+    puts("Insira o tamanho do vetor: \n");
+    scanf("%u", &tamanho); //%u para nao ler valores negativos, e dobra a quantia de caracteres disponiveis se fosse apenas int (inteiros sem sinal)
+
+    srand(time(NULL));
+
+    //alocar memoria:
+    pvetor = malloc(tamanho * sizeof(unsigned char));
+    if (!pvetor){
+        puts("Memória insuficiente.");
+        exit(1);
+    }
+
+    //Randomizar valores do vetor:
+    for(int i = 0; i < tamanho; i++){
+        *(pvetor + i) = rand() % MX;
+    }
+
+    //imprimir vetor:
+    puts("Vetor com ponteiros:\n");
+    for(int i = 0; i < tamanho; i++){
+    printf("[%p] %hhu", pvetor + i , *(pvetor + i));  //[%p] imprime o endereço de memoria do ponteiro, %hhu imprime unsigned char
+    }
+
+    free(pvetor);
+    return 0;
+}
