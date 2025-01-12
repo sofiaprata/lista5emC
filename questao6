@@ -1,0 +1,31 @@
+//Escreva um programa que copie uma string para outra usando ponteiros.
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define TAM 80
+
+int main(){
+    char string1[TAM], string2[TAM];
+    char *p1, *p2;
+
+    printf("Digite uma frase: \n");
+    fgets(string1, sizeof(string1), stdin);
+
+    string1[strcspn(string1, "\n")] = '\0';
+
+    //inicializa os ponteiros
+    p1 = string1;
+    p2 = string2;
+
+    while(*p1 != '\0'){
+        *p2 = *p1;
+        p1++;
+        p2++;
+    }
+    *p2 = '\0';
+
+    printf("String copiada: %s\n", p2);
+
+    return 0;
+}
