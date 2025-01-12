@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define TAM 80
+
+int main(){
+    char string[TAM];
+    char *p;
+    int tamanho = 0;
+
+    printf("Digite uma frase:\n");
+    fgets(string, sizeof(string), stdin);
+
+    // o '\0' significa o fim de uma string
+    for(p = string; *p != '\0'; p++){  //O ponteiro p percorre cada caractere da string até encontrar '\0'
+        if (*p == '\n'){
+            *p = '\0';
+            break;
+        }
+    }
+
+    for(p = string; *p != '\0'; p++){
+        tamanho++;
+    }
+
+    printf("O tamanho da string eh: %d\n", tamanho);
+
+    return 0;
+}
+    
