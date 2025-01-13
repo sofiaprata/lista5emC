@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+void ordenarembolha(int *pvetor, int num) {
+    int *i, *j, temp;
+
+    // Ordenação usando ponteiros
+    for (i = pvetor; i < pvetor + num - 1; i++) {
+        for (j = pvetor; j < pvetor + num - 1 - (i - pvetor); j++) {
+            if (*j > *(j + 1)) {
+                temp = *j;
+                *j = *(j + 1);
+                *(j + 1) = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int vetor[10], num;
+
+    printf("Digite o número de elementos (max. 10): ");
+    scanf("%d", &num);
+
+    printf("Digite %d elementos:\n", num);
+    for (int i = 0; i < num; i++) {
+        printf("Elemento %d: ", i + 1);
+        scanf("%d", &vetor[i]);
+    }
+
+    ordenarembolha(vetor, num);
+
+    printf("Vetor ordenado:\n");
+    for (int i = 0; i < num; i++) {
+        printf("%d ", vetor[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
